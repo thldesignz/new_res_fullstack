@@ -1,0 +1,41 @@
+#waitlist-page {
+    padding: 100px;
+}
+#waitlist-page h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: black;
+    margin-bottom: 2rem;
+}
+#waitlist-page p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+}
+#waitlist-page form .form-group label {
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #000;
+}
+#waitlist-page form .form-group .form-control {
+    padding: 10px;
+    border: 2px solid #cb0006;
+    font-size: 1.1rem;
+    box-sizing: border-box;
+    height: auto;
+}
+#waitlist-page form .form-group button[type="submit"] {
+    background: #cb0006;
+    border: none;
+    padding: 20px 40px;
+}
+@media (min-width: 0px) and (max-width: 767px) {
+    #waitlist-page {
+        padding: 20px;
+   }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    #waitlist-page {
+        padding: 20px;
+   }
+}

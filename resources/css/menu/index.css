@@ -1,0 +1,44 @@
+#menu-page {
+    padding: 100px;
+}
+#menu-page #food-preview {
+    padding: 0px;
+    background: transparent;
+}
+#menu-page #food-preview h2 {
+    color: white;
+    text-transform: uppercase;
+}
+#menu-page #food-preview .button-rounded {
+    margin-bottom: 2rem;
+}
+#menu-page #food-preview .food-description {
+    line-height: 1.2;
+}
+#menu-page #food-preview .left-btn, #menu-page #food-preview .right-btn {
+    background: #000;
+}
+#menu-page #food-preview .slide {
+    height: 500px;
+}
+#menu-page #food-preview .slide:hover .background {
+    background: #000;
+}
+#menu-page #food-preview .food-title {
+    font-size: 1.5rem;
+}
+@media (min-width: 0px) and (max-width: 767px) {
+    #menu-page {
+        padding: 20px;
+   }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    #menu-page {
+        padding: 20px;
+   }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+    #menu-page #food-preview .food-description {
+        line-height: 1;
+   }
+}
