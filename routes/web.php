@@ -13,92 +13,61 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('landing-page');
-});
+
+///static pages
+
+Route::get('/', 'App\Http\Controllers\StaticPagesController@home');
+
+Route::get('/menu', 'App\Http\Controllers\StaticPagesController@menu');
+
+Route::get('/menu/{slug}', 'App\Http\Controllers\StaticPagesController@singleMenu');
+
+Route::get('/about', 'App\Http\Controllers\StaticPagesController@about');
+
+Route::get('/contact', 'App\Http\Controllers\StaticPagesController@waitlist');
+
+Route::get('/reservation', 'App\Http\Controllers\StaticPagesController@reservation');
+
+Route::get('/offers', 'App\Http\Controllers\StaticPagesController@offers');
+
+Route::get('/contact', 'App\Http\Controllers\StaticPagesController@contact');
 
 
-Route::get('/menu', function () {
-    return view('menu/index');
-});
+///admin
 
-Route::get('/menu/{slug}', function () {
-    return view('menu/single-menu');
-});
+Route::get('/admin', 'App\Http\Controllers\admin\AdminController@index');
 
-Route::get('/about', function () {
-    return view('pages/about');
-});
+/// food items
 
-Route::get('/waitlist', function () {
-    return view('pages/waitlist');
-});
+Route::get('/admin/food-items', 'App\Http\Controllers\admin\FoodItemsController@index');
 
-Route::get('/reservation', function () {
-    return view('pages/reservation');
-});
+Route::get('/admin/food-items/create', 'App\Http\Controllers\admin\FoodItemsController@create');
 
-Route::get('/offers', function () {
-    return view('pages/offers');
-});
-
-Route::get('/contact', function () {
-    return view('pages/contact');
-});
-
-Route::get('/admin', function () {
-    return view('admin/dashboard');
-});
-
-Route::get('/admin/food-categories', function () {
-    return view('admin/food-categories/all');
-});
-
-Route::get('/admin/food-categories/create', function () {
-    return view('admin/food-categories/create');
-});
-
-Route::get('/admin/food-categories/edit', function () {
-    return view('admin/food-categories/edit');
-});
+Route::get('/admin/food-items/{id}/edit', 'App\Http\Controllers\admin\FoodItemsController@edit');
 
 // food categories
 
-Route::get('/admin/food-items', function () {
-    return view('admin/food-items/all');
-});
+Route::get('/admin/food-categories', 'App\Http\Controllers\admin\FoodCategoriesController@index');
 
-Route::get('/admin/food-items/create', function () {
-    return view('admin/food-items/create');
-});
+Route::get('/admin/food-categories/create', 'App\Http\Controllers\admin\FoodCategoriesController@create');
 
-Route::get('/admin/food-items/edit', function () {
-    return view('admin/food-items/edit');
-});
+Route::get('/admin/food-categories/{id}/edit', 'App\Http\Controllers\admin\FoodCategoriesController@edit');
 
-///customers
+/// admin customers
 
-Route::get('/admin/offers-members', function () {
-    return view('admin/customers/all-offers-members');
-});
+Route::get('/admin/offers-members', 'App\Http\Controllers\admin\CustomersController@allOffersMembers');
 
-Route::get('/admin/reservations', function () {
-    return view('admin/customers/all-reservations');
-});
+Route::get('/admin/reservations', 'App\Http\Controllers\admin\CustomersController@allReservation');
 
-///users
+///admin users
 
-Route::get('/admin/users', function () {
-    return view('admin/users/all');
-});
+Route::get('/admin/users', 'App\Http\Controllers\admin\UsersController@index');
 
-Route::get('/admin/users/create', function () {
-    return view('admin/users/create');
-});
+Route::get('/admin/users/create', 'App\Http\Controllers\admin\UsersController@create');
 
-Route::get('/admin/users/edit', function () {
-    return view('admin/users/edit');
-});
+Route::post('/admin/users', 'App\Http\Controllers\admin\UsersController@store');
+
+Route::get('/admin/users/{id}/edit', 'App\Http\Controllers\admin\UsersController@edit');
 
 
 //admin regerstration

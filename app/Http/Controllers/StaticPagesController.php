@@ -9,4 +9,25 @@ class StaticPagesController extends Controller
     public function about(){
         return view('pages/about');
     }
+    public function waitlist(){
+        return view('pages/waitlist');
+    }
+    public function reservation(){
+        return view('pages/reservation');
+    }
+    public function offers(){
+        return view('pages/offers');
+    }
+    public function contact(){
+        return view('pages/contact');
+    }
+    public function home(){
+        return view('landing-page');
+    }
+    public function menu(){
+        return view('menu/index');
+    }
+    public function singleMenu(){
+        return view('menu/single-menu');
+    }
 }
