@@ -30,7 +30,7 @@
            <!-- ============================================================== -->
            <!-- end pageheader -->
            <!-- ============================================================== -->
-          
+
                <div class="row">
                    <!-- ============================================================== -->
                    <!-- basic table -->
@@ -44,20 +44,28 @@
                                        <tr>
                                            <th scope="col">ID</th>
                                            <th scope="col">Title</th>
+                                           <th scope="col">Description</th>
+                                           <th scope="col">Image_Url</th>
                                            <th scope="col">Date Created</th>
                                            <th scope="col">Edit</th>
                                            <th scope="col">Delete</th>
                                        </tr>
                                    </thead>
                                    <tbody>
-                                       <tr>
-                                           <th scope="row">1</th>
-                                           <td>Burgers</td>
-                                           <td>9/1/2020</td>
-                                           <td><a href="/admin/food-categories/1/edit"><i class="fas fa-edit"></i></a></td>
-                                           <td><a href="/admin/food-categories/1/delete" onclick="if(! confirm('Are you sure you want to delete category?')) {return false; } " ><i class="far fa-trash-alt"></i></a></td>
-                                       </tr>
-                                       
+                                    @foreach ($categories as $category)
+                                    <tr>
+                                        <th scope="row">{{ $category->id }}</th>
+                                        <td>{{ $category->title }}</td>
+                                        <td>{{ $category->description }}</td>
+                                        <td>{{ $category->image_url }}</td>
+                                        <td>{{ date('m/d/y', strtotime($category->updated_at)) }}</td>
+                                        <td><a href="/admin/food-categories/{{ $category->id }}/edit"><i class="fas fa-edit"></i></a></td>
+                                        <td><a href="/admin/food-categories/{{ $category->id }}/delete" onclick="if(! confirm('Are you sure you want to delete category?')) {return false; } " ><i class="far fa-trash-alt"></i></a></td>
+                                    </tr>
+                                    @endforeach
+
+
+
                                    </tbody>
                                </table>
                            </div>
@@ -69,8 +77,8 @@
 
                </div>
        </div>
-          
-       
+
+
 
 
 @endsection

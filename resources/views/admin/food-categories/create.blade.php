@@ -31,7 +31,7 @@
        <!-- ============================================================== -->
        <!-- end pageheader -->
        <!-- ============================================================== -->
-    
+
 
            <div class="row">
                <!-- ============================================================== -->
@@ -41,18 +41,48 @@
                    <div class="card">
                        <h5 class="card-header">Create a new category</h5>
                        <div class="card-body">
-                           <form action="#" id="basicform" data-parsley-validate="" novalidate="">
+                        <form class="" method="POST" action="/admin/food-categories">
+                            @csrf
                                <div class="form-group">
-                                   <label for="inputCategory">Category Name</label>
-                                   <input id="inputCategory" type="text" name="Category" data-parsley-trigger="change" required="" placeholder="Enter category name" autocomplete="off" class="form-control">
+                                   <label for="title">Title</label>
+                                   <input id="title" type="text" class="form-control form-control-lg @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="title" autofocus placeholder="Title">
+
+                            @error('title')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                                </div>
                                <div class="form-group">
-                                   <label for="inputCategoryImagUrl">Category Image URL</label>
-                                   <input id="inputCategoryImagUrl" type="text" name="img_url" data-parsley-trigger="change" required="" placeholder="http://jamies.com/img/startes.jpg" autocomplete="off" class="form-control">
-                               </div>
+                                <label for="description">Description</label>
+                                <textarea id="description" type="text" class="form-control form-control-lg @error('description') is-invalid @enderror" name="description"  required autocomplete="description" autofocus placeholder="Description"> {{ old('description') }}</textarea>
+
+                            @error('description')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="image_url">Image_url</label>
+                                    <input id="image_url" type="text" class="form-control form-control-lg @error('image_url') is-invalid @enderror" name="image_url" value="{{ old('image_url') }}" required autocomplete="image_url" placeholder="Image_Url">
+
+                            @error('image_url')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                                </div>
+
+
+
+
+
+
+
                                <div class="row">
                                    <div class="col-sm-6 pb-2 pb-sm-4 pb-lg-0 pr-0">
-                                      
+
                                    </div>
                                    <div class="col-sm-6 pl-0">
                                        <p class="text-right">
@@ -70,10 +100,10 @@
 
            </div>
 
-  
+
    </div>
-          
-       
+
+
 
 
 @endsection

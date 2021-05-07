@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
+@section('title')
 
+Offers- {{$settings["general"]->site_title}} 
+
+@endsection
 
 @section('content')
     
@@ -10,21 +14,34 @@
             <div class="row">
                 <div class="col-md-10 offset-md-1 ">
                     <h1>Sign up for offers and Rewards</h1>
-                    <form>
+                    <form class="" method="POST" action="/offers">
+                            @csrf
                     <div class="row">
 
                       <div class="col-md-6">
                         
                         <div class="form-group">
-                          <label for="firstnameinput">First Name</label>
-                          <input type="text" name="fname" class="form-control" id="firstnameinput" placeholder="John">
+                          <label for="inputfname">First Name</label>
+                          <input id="inputfname" type="text" class="form-control form-control-lg @error('fname') is-invalid @enderror" name="fname" value="{{ old('fname') }}" required autocomplete="fname" autofocus placeholder="John">
+
+                            @error('fname')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                       </div>
 
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="lastnameinput">Last Name</label>
-                          <input type="text" name="lname" class="form-control" id="lastnameinput" placeholder="Smith">
+                          <label for="inputlname">Last Name</label>
+                          <input id="inputlname" type="text" class="form-control form-control-lg @error('lname') is-invalid @enderror" name="lname" value="{{ old('lname') }}" required autocomplete="lname" autofocus placeholder="Smith">
+
+                            @error('lname')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                       </div>
 
@@ -35,15 +52,28 @@
                       <div class="col-md-6">
                         
                         <div class="form-group">
-                          <label for="emailinput">Email</label>
-                          <input type="email" name="email" class="form-control" id="emailinput" placeholder="name@example.com">
+                          <label for="inputemail">Email</label>
+                           <label for="inputemail">Last Name</label>
+                          <input id="inputemail" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Exapmple@gmail.com">
+
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                       </div>
 
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="phoneinput">Phone Number</label>
-                          <input type="text" name="phone" class="form-control" id="phoneinput" placeholder="555-555-1234">
+                          <label for="inputphone">Phone Number</label>
+                          <input id="inputphone" type="tel" class="form-control form-control-lg @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number" autofocus placeholder="555-555-1234">
+
+                            @error('phone_number')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                       </div>
 

@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
+@section('title')
 
+Resevations- {{$settings["general"]->site_title}} 
+
+@endsection
 
 @section('content')
 
@@ -11,39 +15,79 @@
                 <div class="col-md-6">
                     <h1>Get on the List</h1>
 
-                    <form>
+                    <form class="" method="POST" action="/reservation">
+                            @csrf
                         <div class="form-group">
-                            <label for="fnameinput">Full Name</label>
-                            <input type="text" name="fname" class="form-control" id="fnameinput" placeholder="jane smith">
+                            <label for="inputfname">First Name</label>
+                            <input id="inputfname" type="text" class="form-control form-control-lg @error('fname') is-invalid @enderror" name="fname" value="{{ old('fname') }}" required autocomplete="fname" autofocus placeholder="John">
+
+                            @error('fname')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                          </div>
+                          <div class="form-group">
+                            <label for="inputlname">Last Name</label>
+                            <input id="inputlname" type="text" class="form-control form-control-lg @error('lname') is-invalid @enderror" name="lname" value="{{ old('lname') }}" required autocomplete="lname" autofocus placeholder="Smith">
+
+                            @error('lname')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                           </div>
                         <div class="form-group">
                           <label for="emailinput">Email</label>
-                          <input type="email" name="email" class="form-control" id="emailinput" placeholder="name@example.com">
+                          <input id="inputemail" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Exapmple@gmail.com">
+
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <label for="phoneinput">Phone Number</label>
-                            <input type="text" name="phone" class="form-control" id="phoneinput" placeholder="555-555-1234">
+                            <label for="inputphone">Phone Number</label>
+                            <input id="inputphone" type="tel" class="form-control form-control-lg @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number" autofocus placeholder="555-555-1234">
+
+                            @error('phone_number')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                           </div>
                         <div class="form-group">
-                          <label for="guestinput">How Many Guest</label>
-                          <select name="guest" class="form-control" id="guestinput">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                          <label for="guest_total">How Many Guest</label>
+                          <select name="guest_total" class="form-control form-control-lg @error('guest_total') is-invalid @enderror" id="guestinput">
+                            <option value="1" >1</option>
+                            <option value="2" >2</option>
+                            <option value="3" >3</option>
+                            <option value="4" >4</option>
+                            <option value="5" >5</option>
                           </select>
+
+                          @error('guest_total')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
 
                         <div class="form-group">
                             <label for="timeinput">What Time</label>
-                            <select name="time" class="form-control" id="timeinput">
-                              <option value="5">5:00 PM</option>
-                              <option value="6" >6:00 PM</option>
-                              <option value="7" >7:00 PM</option>
-                              <option value="8" >8:00 PM</option>
+                            <select name="time" class="form-control form-control-lg @error('time') is-invalid @enderror" id="timeinput">
+                              <option value="6">5:00 PM</option>
+                              <option value="7" >6:00 PM</option>
+                              <option value="7:00 pm" >7:00 PM</option>
+                              <option value="9" >8:00 PM</option>
                               <option value="9" >9:00 PM</option>
                             </select>
+                            @error('time')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                           </div>
                           <div class="form-group">
                           <button type="submit" class="btn btn-primary">Confirm</button>

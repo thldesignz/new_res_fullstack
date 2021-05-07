@@ -31,6 +31,15 @@
     border: none;
     padding: 20px 40px;
 }
+
+#offers-page .thanks h1{
+    color: black;
+}
+
+#offers-page .thanks p{
+    text-align: center;
+}
+
 @media (min-width: 0px) and (max-width: 767px) {
     #offers-page {
         padding: 20px;

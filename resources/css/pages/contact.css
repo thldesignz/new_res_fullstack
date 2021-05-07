@@ -1,0 +1,29 @@
+#contact-page {
+    padding: 100px;
+}
+#contact-page h1 {
+    font-size: 4rem;
+    font-weight: 500;
+    color: black;
+    margin-bottom: 2rem;
+}
+#contact-page h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: black;
+}
+#contact-page p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+}
+@media (min-width: 0px) and (max-width: 767px) {
+    #contact-page {
+        padding: 20px;
+   }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    #contact-page {
+        padding: 20px;
+   }
+}

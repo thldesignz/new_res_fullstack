@@ -3,8 +3,10 @@
  @import "reset.css";
  @import "home.css";
  @import "pages/about.css";
+ @import "pages/contact.css";
  @import "pages/waitlist.css";
  @import "pages/offers.css";
+ @import "pages/thankyou.css";
  @import "menu/index.css";
  @import "menu/single-menu.css";
 
@@ -357,8 +359,12 @@
 	 #food-preview {
 		 padding: 20px;
 		 width: 100%;
-		 overflow: hidden;
+		 overflow: auto;
 	}
+    #food-preview .food-slider .sliding-system {
+        white-space: normal;
+        transform: translate3d(0%, 0, 0);
+   }
 	 #food-preview h2 {
 		 font-size: 2rem;
 		 margin-bottom: 2rem;
@@ -366,9 +372,11 @@
 	}
 	 #food-preview .container .left-btn {
 		 left: -20px;
+         display: none;
 	}
 	 #food-preview .container .right-btn {
 		 right: -20px;
+         display: none;
 	}
 	 #food-preview h2 {
 		 font-size: 2rem;
@@ -379,6 +387,7 @@
 	}
 	 #food-preview .food-slider .slide {
 		 width: 100%;
+         margin-bottom: 1rem;
 	}
 }
  .content-box {

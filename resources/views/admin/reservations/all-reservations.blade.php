@@ -43,25 +43,32 @@
                                    <thead>
                                     <tr>
                                         <th scope="col">ID</th>
-                                        <th scope="col">Full Name</th>
+                                        <th scope="col">First Name</th>
+                                        <th scope="col">Last Name</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">Phone Number</th>
                                         <th scope="col">Guest Total</th>
                                         <th scope="col">Time</th>
                                         <th scope="col">Date Created</th>
+                                        <th scope="col">Edit</th>
+                                        <th scope="col">Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                @foreach ($reservations as $reservations)
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <th scope="col">Jane Smith</th>
-                                        <td>janesmith@email.com</td>
-                                        <td>513-555-1234</td>
-                                        <td>4</td>
-                                        <td>4:00PM</td>
-                                        <td>7/20/2020</td>
+                                    <th scope="row">{{ $reservations->id }}</th>
+                                        <td>{{ $reservations->fname }}</td>
+                                        <td>{{ $reservations->lname}}</td>
+                                        <td>{{ $reservations->email}}</td>
+                                        <td>{{ $reservations->phone_number}}</td>
+                                        <td>{{ $reservations->guest_total}}</td>
+                                        <td>{{ $reservations->time}}</td>
+                                        <td>{{ date('m/d/y', strtotime($reservations->updated_at)) }}</td>
+                                        <td><a href="/admin/reservations/{{ $reservations->id }}/edit"><i class="fas fa-edit"></i></a></td>
+                                        <td><a href="/admin/reservations/{{ $reservations->id }}/delete" onclick="if(! confirm('Are you sure you want to delete category?')) {return false; } " ><i class="far fa-trash-alt"></i></a></td>
                                     </tr>
-
+                                    @endforeach
                                    </tbody>
                                </table>
                            </div>

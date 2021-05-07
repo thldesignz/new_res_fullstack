@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -43,6 +44,17 @@ class User extends Authenticatable
     ];
 
     public function roles(){
-        return $this->belongsToMany('App\Role');
+        // return $this->belongsToMany('App\Role')->withTimestamps();
+
+        return $this->belongsToMany(Role::class, 'role_user' )->withTimestamps();
+
+    }
+
+    public function isAdmin(){
+        if($this->roles->contains(1)){
+            return true;
+        } else {
+            return false;
+        }
     }
 }

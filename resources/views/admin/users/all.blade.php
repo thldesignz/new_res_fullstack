@@ -43,6 +43,8 @@
                                    <thead>
                                        <tr>
                                            <th scope="col">ID</th>
+                                           <th scope="col">First Name</th>
+                                           <th scope="col">Last Name</th>
                                            <th scope="col">Email</th>
                                            <th scope="col">Date Created</th>
                                            <th scope="col">Edit</th>
@@ -50,16 +52,23 @@
                                        </tr>
                                    </thead>
                                    <tbody>
-                                       <tr>
-                                           <th scope="row">1</th>
-                                           <td>jondoe@email.com</td>
-                                           <td>9/1/2020</td>
-                                           <td><a href="/admin/users/1/edit"><i class="fas fa-edit"></i></a></td>
-                                           <td><a href="/admin/users/1/delete" onclick="if(! confirm('Are you sure you want to delete category?')) {return false; } " ><i class="far fa-trash-alt"></i></a></td>
-                                       </tr>
+                                    @foreach ($users as $user)
+                                    <tr>
+                                        <th scope="row">{{ $user->id }}</th>
+                                        <td>{{ $user->fname }}</td>
+                                        <td>{{ $user->lname }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>{{ date('m/d/y', strtotime($user->updated_at)) }}</td>
+                                        <td><a href="/admin/users/{{ $user->id }}/edit"><i class="fas fa-edit"></i></a></td>
+                                        <td><a href="/admin/users/{{ $user->id }}/delete" onclick="if(! confirm('Are you sure you want to delete category?')) {return false; } " ><i class="far fa-trash-alt"></i></a></td>
+                                    </tr>
+                                    @endforeach
+
+
 
                                    </tbody>
                                </table>
+                               {{-- {{ $users->links() }} --}}
                            </div>
                        </div>
                    </div>

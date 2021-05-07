@@ -43,23 +43,31 @@
                                    <thead>
                                        <tr>
                                            <th scope="col">ID</th>
-                                           <th scope="col">Full Name</th>
+                                           <th scope="col">First Name</th>
+                                           <th scope="col">Last Name</th>
                                            <th scope="col">Email</th>
                                            <th scope="col">Phone Number</th>
-                                           <th scope="col">Date Created</th>
+                                           <th scope="col">Date</th>
                                        </tr>
                                    </thead>
                                    <tbody>
-                                       <tr>
-                                           <th scope="row">1</th>
-                                           <td>Jane Smith</td>
-                                           <td>janesmith@email.com</td>
-                                           <td>513-555-1234</td>
-                                           <td>7/20/2020</td>
-                                       </tr>
+                                    @foreach ($members as $member)
+                                    <tr>
+                                        <th scope="row">{{ $member->id }}</th>
+                                        <td>{{ $member->fname }}</td>
+                                        <td>{{ $member->lname }}</td>
+                                        <td>{{ $member->email }}</td>
+                                        <td>{{ $member->phone_number }}</td>
+                                        <td>{{ date('m/d/y', strtotime($member->updated_at)) }}</td>
+                                        <td><a href="/admin/members/{{ $member->id }}/delete" onclick="if(! confirm('Are you sure you want to delete category?')) {return false; } " ><i class="far fa-trash-alt"></i></a></td>
+                                    </tr>
+                                    @endforeach
+
+
 
                                    </tbody>
                                </table>
+                                {{ $members->links() }}
                            </div>
                        </div>
                    </div>
