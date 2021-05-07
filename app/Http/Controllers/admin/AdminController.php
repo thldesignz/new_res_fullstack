@@ -22,7 +22,7 @@ class AdminController extends Controller
         $estimated_income_last30 = DB::select(DB::raw('
             SELECT
             (sum(guest_total) * 27 ) as total
-            FROM newresfull.reservations
+            FROM reservations
             WHERE created_at BETWEEN CURDATE() - INTERVAL 30 DAY AND CURDATE()
         '));
         $estimated_income_last30 = $estimated_income_last30[0]->total;
@@ -30,7 +30,7 @@ class AdminController extends Controller
         $total_customers = DB::select(DB::raw('
             SELECT
             sum(guest_total) as total
-            FROM newresfull.reservations
+            FROM reservations
             WHERE created_at BETWEEN CURDATE() - INTERVAL 30 DAY AND CURDATE()
         '));
 
@@ -39,7 +39,7 @@ class AdminController extends Controller
         $total_reservations = DB::select(DB::raw('
             SELECT
             COUNT(*) as total
-            FROM newresfull.reservations
+            FROM reservations
             WHERE created_at BETWEEN CURDATE() - INTERVAL 30 DAY AND CURDATE()
         '));
 
@@ -47,7 +47,7 @@ class AdminController extends Controller
 
         $total_users = DB::select(DB::raw('
             SELECT count(*)as total
-            FROM newresfull.users
+            FROM users
             inner join role_user on role_user.user_id = users.id
             inner join roles on roles.id = role_user.role_id
             where role_id = 2
@@ -80,7 +80,7 @@ class AdminController extends Controller
         // DATE_FORMAT(created_at, "%Y-%m-%d") as reserved_day,
         // (SUM(guest_total)*47) as estimated_earnings,
         // count(*) as total_reservations
-        // FROM newresfull.reservations
+        // FROM reservations
         // group by reserved_day desc;
         // '));
         // $estimated_income_daily = $estimated_income_daily[0]->total;
@@ -89,7 +89,7 @@ class AdminController extends Controller
         SELECT
         DATE_FORMAT(created_at, "%Y-%m-%d") as x,
         (SUM(guest_total)*47) as y
-        FROM newresfull.reservations
+        FROM reservations
         group by x desc;
         '));
         $estimated_income_daily = $estimated_income_daily[0]->total;
