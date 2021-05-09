@@ -74,12 +74,12 @@ class StaticPagesController extends Controller
 
     public function offersThankYou(){
 
-        return view('/pages/thank-you');
+        return view('pages/thank-you');
     }
 
     public function reservationThankYou(){
 
-        return view('/pages/thank-you2');
+        return view('pages/thank-you2');
     }
 
     public function contact(){
